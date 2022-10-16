@@ -23,6 +23,7 @@ body {
   background-color: white;
   position: relative;
   top: -.5rem;
+  border-bottom: 0.2px solid rgb(189, 182, 182);
 }
 
 .logo {
