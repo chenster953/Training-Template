@@ -22,14 +22,81 @@ const absExercisesNoEquiptment = ['Crunches', 'Heel Taps', 'Plank', 'Mountain Cl
 
 const muscleGroups = [chest, back, arms, shoulders, legs, abs];
 
-chest.addEventListener("click", ()=> {
-  exerciseList.classList.add('active');
-  exerciseList.innerHTML = '';
-  chestExercises.forEach((exercise)=> {
-    let newExercise = document.createElement("button");
-    newExercise.classList.add('newexercise');
-    newExercise.setAttribute('draggable', true);
-    newExercise.innerHTML = exercise;
-    exerciseList.appendChild(newExercise);
+const newExercise = document.querySelector('.newexercise');
+
+muscleGroups.forEach((muscle)=> {
+  muscle.addEventListener("click", ()=> {
+    exerciseList.classList.add('active');
+    exerciseList.innerHTML = '';
+    if (muscle.innerHTML.includes('CHEST')) {
+      chestExercises.forEach((exercise)=> {
+        let newExercise = document.createElement("button");
+        newExercise.classList.add('newexercise');
+        newExercise.setAttribute('draggable', true);
+        newExercise.innerHTML = exercise;
+        exerciseList.appendChild(newExercise);
+        newExercise.addEventListener("dragstart", ()=> {
+          newExercise.classList.add('dragging');
+        })
+      })
+    } else if (muscle.innerHTML.includes('BACK')) {
+      backExercises.forEach((exercise)=> {
+        let newExercise = document.createElement("button");
+        newExercise.classList.add('newexercise');
+        newExercise.setAttribute('draggable', true);
+        newExercise.innerHTML = exercise;
+        exerciseList.appendChild(newExercise);
+        newExercise.addEventListener("dragstart", ()=> {
+          newExercise.classList.add('dragging');
+        })
+        newExercise.addEventListener("dragend", ()=> {
+          
+        })
+      })
+    } else if (muscle.innerHTML.includes('ARMS')) {
+      armsExercises.forEach((exercise)=> {
+        let newExercise = document.createElement("button");
+        newExercise.classList.add('newexercise');
+        newExercise.setAttribute('draggable', true);
+        newExercise.innerHTML = exercise;
+        exerciseList.appendChild(newExercise);
+        newExercise.addEventListener("dragstart", ()=> {
+          newExercise.classList.add('dragging');
+        })
+      })
+    } else if (muscle.innerHTML.includes('SHOULDERS')) {
+      shouldersExercises.forEach((exercise)=> {
+        let newExercise = document.createElement("button");
+        newExercise.classList.add('newexercise');
+        newExercise.setAttribute('draggable', true);
+        newExercise.innerHTML = exercise;
+        exerciseList.appendChild(newExercise);
+        newExercise.addEventListener("dragstart", ()=> {
+          newExercise.classList.add('dragging');
+        })
+      })
+    } else if (muscle.innerHTML.includes('LEGS')) {
+      legsExercises.forEach((exercise)=> {
+        let newExercise = document.createElement("button");
+        newExercise.classList.add('newexercise');
+        newExercise.setAttribute('draggable', true);
+        newExercise.innerHTML = exercise;
+        exerciseList.appendChild(newExercise);
+        newExercise.addEventListener("dragstart", ()=> {
+          newExercise.classList.add('dragging');
+        })
+      })
+    } else if (muscle.innerHTML.includes('ABS')) {
+      absExercises.forEach((exercise)=> {
+        let newExercise = document.createElement("button");
+        newExercise.classList.add('newexercise');
+        newExercise.setAttribute('draggable', true);
+        newExercise.innerHTML = exercise;
+        exerciseList.appendChild(newExercise);
+        newExercise.addEventListener("dragstart", ()=> {
+          newExercise.classList.add('dragging');
+        })
+      })
+    }
   })
-});
+})
