@@ -5,6 +5,13 @@ const shoulders = document.querySelector(".shoulders");
 const legs = document.querySelector(".legs");
 const abs = document.querySelector(".abs");
 const exerciseList = document.querySelector(".exerciselist");
+const sunday = document.querySelector(".sundaylist");
+const monday = document.querySelector(".mondaylist");
+const tuesday = document.querySelector(".tuesdaylist");
+const wednesday = document.querySelector(".wednesdaylist");
+const thursday = document.querySelector(".thursdaylist");
+const friday = document.querySelector(".fridaylist");
+const saturday = document.querySelector(".saturdaylist");
 
 const chestExercises = ['Flat Bench Press', 'Incline Bench Press', 'Cable Flys', 'Dips', 'Flat Dumbbell Press', 'Incline Dumbbell Press', 'Machine Fly', 'Machine Press', ];
 const backExercises = ['One-Arm Dumbbell Row', 'Bent Over Row', 'Pull Down', 'Seated Machine Row', 'T-Bar Row', 'Meadows Row', 'Lat Prayers', 'Dumbbell Shrugs'];
@@ -21,6 +28,7 @@ const legsExercisesNoEquiptment = ['Squats', 'Weighted Squats', 'Bulgarian Split
 const absExercisesNoEquiptment = ['Crunches', 'Heel Taps', 'Plank', 'Mountain Climbers', 'Leg Raises', 'Bicycle Crunches', 'Leg Circles', 'Russian Twist']; 
 
 const muscleGroups = [chest, back, arms, shoulders, legs, abs];
+const weekdays = [sunday, monday, tuesday, wednesday, thursday, friday, saturday];
 
 const newExercise = document.querySelector('.newexercise');
 
@@ -98,5 +106,13 @@ muscleGroups.forEach((muscle)=> {
         })
       })
     }
+  })
+});
+
+weekdays.forEach((day)=> {
+  chestExercises.forEach((exercise)=> {
+    newex = document.createElement('div');
+    newex.innerHTML = exercise;
+    day.appendChild(newex)
   })
 })
