@@ -110,9 +110,8 @@ muscleGroups.forEach((muscle)=> {
 });
 
 weekdays.forEach((day)=> {
-  chestExercises.forEach((exercise)=> {
-    newex = document.createElement('div');
-    newex.innerHTML = exercise;
-    day.appendChild(newex)
-  })
+  chestExercises.forEach((ex)=> {
+  newex = document.createElement('div');
+  newex.innerHTML = ex;
+  day.append(newex)})
 })
