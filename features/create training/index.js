@@ -5,13 +5,20 @@ const shoulders = document.querySelector(".shoulders");
 const legs = document.querySelector(".legs");
 const abs = document.querySelector(".abs");
 const exerciseList = document.querySelector(".exerciselist");
-const sunday = document.querySelector(".sundaylist");
-const monday = document.querySelector(".mondaylist");
-const tuesday = document.querySelector(".tuesdaylist");
-const wednesday = document.querySelector(".wednesdaylist");
-const thursday = document.querySelector(".thursdaylist");
-const friday = document.querySelector(".fridaylist");
-const saturday = document.querySelector(".saturdaylist");
+const sunday = document.querySelector(".sunday");
+const monday = document.querySelector(".monday");
+const tuesday = document.querySelector(".tuesday");
+const wednesday = document.querySelector(".wednesday");
+const thursday = document.querySelector(".thursday");
+const friday = document.querySelector(".friday");
+const saturday = document.querySelector(".saturday");
+const sundaylist = document.querySelector(".sundaylist");
+const mondaylist = document.querySelector(".mondaylist");
+const tuesdaylist = document.querySelector(".tuesdaylist");
+const wednesdaylist = document.querySelector(".wednesdaylist");
+const thursdaylist = document.querySelector(".thursdaylist");
+const fridaylist = document.querySelector(".fridaylist");
+const saturdaylist = document.querySelector(".saturdaylist");
 
 const chestExercises = ['Flat Bench Press', 'Incline Bench Press', 'Cable Flys', 'Dips', 'Flat Dumbbell Press', 'Incline Dumbbell Press', 'Machine Fly', 'Machine Press', ];
 const backExercises = ['One-Arm Dumbbell Row', 'Bent Over Row', 'Pull Down', 'Seated Machine Row', 'T-Bar Row', 'Meadows Row', 'Lat Prayers', 'Dumbbell Shrugs'];
@@ -28,9 +35,11 @@ const legsExercisesNoEquiptment = ['Squats', 'Weighted Squats', 'Bulgarian Split
 const absExercisesNoEquiptment = ['Crunches', 'Heel Taps', 'Plank', 'Mountain Climbers', 'Leg Raises', 'Bicycle Crunches', 'Leg Circles', 'Russian Twist']; 
 
 const muscleGroups = [chest, back, arms, shoulders, legs, abs];
-const weekdays = [sunday, monday, tuesday, wednesday, thursday, friday, saturday];
+const days = [sunday, monday, tuesday, wednesday, thursday, friday, saturday];
+const dayslist = [sundaylist, mondaylist, tuesdaylist, wednesdaylist, thursdaylist, fridaylist, saturdaylist];
 
 const newExercise = document.querySelector('.newexercise');
+let draggedItem;
 
 muscleGroups.forEach((muscle)=> {
   muscle.addEventListener("click", ()=> {
@@ -43,8 +52,8 @@ muscleGroups.forEach((muscle)=> {
         newExercise.setAttribute('draggable', true);
         newExercise.innerHTML = exercise;
         exerciseList.appendChild(newExercise);
-        newExercise.addEventListener("dragstart", ()=> {
-          newExercise.classList.add('dragging');
+        newExercise.addEventListener('dragstart', ()=>{
+          draggedItem = newExercise.innerHTML;
         })
       })
     } else if (muscle.innerHTML.includes('BACK')) {
@@ -54,11 +63,8 @@ muscleGroups.forEach((muscle)=> {
         newExercise.setAttribute('draggable', true);
         newExercise.innerHTML = exercise;
         exerciseList.appendChild(newExercise);
-        newExercise.addEventListener("dragstart", ()=> {
-          newExercise.classList.add('dragging');
-        })
-        newExercise.addEventListener("dragend", ()=> {
-          
+        newExercise.addEventListener('dragstart', ()=>{
+          draggedItem = newExercise.innerHTML;
         })
       })
     } else if (muscle.innerHTML.includes('ARMS')) {
@@ -68,8 +74,8 @@ muscleGroups.forEach((muscle)=> {
         newExercise.setAttribute('draggable', true);
         newExercise.innerHTML = exercise;
         exerciseList.appendChild(newExercise);
-        newExercise.addEventListener("dragstart", ()=> {
-          newExercise.classList.add('dragging');
+        newExercise.addEventListener('dragstart', ()=>{
+          draggedItem = newExercise.innerHTML;
         })
       })
     } else if (muscle.innerHTML.includes('SHOULDERS')) {
@@ -79,8 +85,8 @@ muscleGroups.forEach((muscle)=> {
         newExercise.setAttribute('draggable', true);
         newExercise.innerHTML = exercise;
         exerciseList.appendChild(newExercise);
-        newExercise.addEventListener("dragstart", ()=> {
-          newExercise.classList.add('dragging');
+        newExercise.addEventListener('dragstart', ()=>{
+          draggedItem = newExercise.innerHTML;
         })
       })
     } else if (muscle.innerHTML.includes('LEGS')) {
@@ -90,8 +96,8 @@ muscleGroups.forEach((muscle)=> {
         newExercise.setAttribute('draggable', true);
         newExercise.innerHTML = exercise;
         exerciseList.appendChild(newExercise);
-        newExercise.addEventListener("dragstart", ()=> {
-          newExercise.classList.add('dragging');
+        newExercise.addEventListener('dragstart', ()=>{
+          draggedItem = newExercise.innerHTML;
         })
       })
     } else if (muscle.innerHTML.includes('ABS')) {
@@ -101,17 +107,47 @@ muscleGroups.forEach((muscle)=> {
         newExercise.setAttribute('draggable', true);
         newExercise.innerHTML = exercise;
         exerciseList.appendChild(newExercise);
-        newExercise.addEventListener("dragstart", ()=> {
-          newExercise.classList.add('dragging');
+        newExercise.addEventListener('dragstart', ()=>{
+          draggedItem = newExercise.innerHTML;
         })
-      })
+        })
+      }});
+    }
+  );
+
+
+weekdayEventListener();
+
+function weekdayEventListener() {
+  days.forEach((day)=> {
+    day.addEventListener('dragover', (e)=> {
+    e.preventDefault();
+  })
+  day.addEventListener('dragenter', (e)=> {
+    day.style.backgroundColor = 'red'
+  })
+  day.addEventListener('dragleave', (e)=> {
+    day.style.backgroundColor = 'transparent';
+  })
+  day.addEventListener('drop',()=> {
+    newel = document.createElement("div");
+    newel.innerHTML = draggedItem;
+    day.style.backgroundColor = 'transparent';
+    if (day.innerHTML == 'SUNDAY') {
+      sundaylist.appendChild(newel);
+    } else if (day.innerHTML == 'MONDAY') {
+      mondaylist.appendChild(newel);
+    } else if (day.innerHTML == 'TUESDAY') {
+      tuesdaylist.appendChild(newel);
+    } else if (day.innerHTML == 'WEDNESDAY') {
+      wednesdaylist.appendChild(newel);
+    } else if (day.innerHTML == 'THURSDAY') {
+      thursdaylist.appendChild(newel);
+    } else if (day.innerHTML == 'FRIDAY') {
+      fridaylist.appendChild(newel);
+    } else if (day.innerHTML == 'SATURDAY') {
+      saturdaylist.appendChild(newel);
     }
   })
-});
-
-weekdays.forEach((day)=> {
-  chestExercises.forEach((ex)=> {
-  newex = document.createElement('div');
-  newex.innerHTML = ex;
-  day.append(newex)})
-})
+  })
+}
