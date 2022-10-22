@@ -207,10 +207,6 @@ body {
   transition: 0.4s;
 }
 
-.weekdays div:hover {
-  background-color: red;
-}
-
 .lists {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -221,6 +217,28 @@ body {
   right: -1.5rem;
 }
 
-.dragging {
+.newexercise.dragging {
   opacity: 0.5;
+}
+
+.reset {
+  background-color: transparent;
+  border: none;
+  position: relative;
+  left: 83rem;
+  bottom: 7rem;
+  font-size: 3rem;
+  text-shadow: 2px 2px black;
+  transition: 0.4s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 3rem;
+  height: 2.6rem;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.reset:hover {
+  scale: 1.2;
 }
