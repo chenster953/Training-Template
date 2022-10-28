@@ -155,3 +155,13 @@ body {
   width: 6rem;
   cursor: pointer;
 }
+
+.sort {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.sort button {
+  width: 7rem;
+}

@@ -3,9 +3,12 @@ const minCalories = document.querySelector('.mincaloriesinput');
 const maxCalories = document.querySelector('.maxcaloriesinput');
 const submit = document.querySelector('.submit');
 const recipes = document.querySelector('.recipes');
+const lowest = document.querySelector('.lowest');
+const highest = document.querySelector('.highest');
 
-
+let results = false;
 submit.addEventListener('click', ()=> {
+  results === true;
   fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=0b67ee8883dc43028b34e96eccabe5e7&query=${searchbox.value}&number=20&minCalories=${minCalories.value}&maxCalories=${maxCalories.value}`)
     .then((res) => res.json())
     .then((data) => {
@@ -21,3 +24,7 @@ submit.addEventListener('click', ()=> {
       })
     })
 });
+
+if (results) {
+  
+}
