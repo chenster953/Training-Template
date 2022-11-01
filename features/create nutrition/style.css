@@ -98,6 +98,8 @@ body {
   overflow: hidden;
   background-color: white;
   transition: 0.4s;
+  border-radius: 10px;
+  cursor: grab;
 }
 
 .recipes div:hover {
@@ -106,24 +108,8 @@ body {
   cursor: pointer;
 }
 
-.recipes div button {
-  position: relative; 
-  left: 8rem;
-  bottom: 1rem;
-  background-color: lightgreen;
-  border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 200;
-  transition: 0.4s;
-}
-
-.recipes div button:hover {
-  scale: 1.1;
-  background-color: rgb(72, 252, 72);
-  cursor: pointer;
+.dragging {
+  opacity: 0.5;
 }
 
 .image {
@@ -131,6 +117,7 @@ body {
   position: relative;
   top: 2.5rem;
   max-height: 230px;
+  border-radius: 10px;
 }
 
 .title {
@@ -195,3 +182,7 @@ body {
   width: 7rem;
 }
 
+.saved {
+  background-color: transparent;
+  border: none;
+}

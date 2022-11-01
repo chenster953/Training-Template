@@ -282,6 +282,8 @@ body {
 }
 
 .resources {
+  position: relative;
+  top: -.85rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -289,6 +291,8 @@ body {
 }
 
 .support {
+  position: relative;
+  top: -1.8rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
