@@ -41,8 +41,12 @@ const muscleGroups = [chest, back, arms, shoulders, legs, abs];
 const days = [sunday, monday, tuesday, wednesday, thursday, friday, saturday];
 const daysList = [sundaylist, mondaylist, tuesdaylist, wednesdaylist, thursdaylist, fridaylist, saturdaylist];
 
+let weeklyVolume = 0;
+
+
 const newExercise = document.querySelector('.newexercise');
 const reset = document.querySelector('.reset');
+const check = document.querySelector('.check');
 // RENDER MUSCLE GROUP BUTTONS
 let draggedItem;
 muscleGroups.forEach((muscle)=> {
@@ -159,6 +163,7 @@ function weekdayEventListener() {
     newel = document.createElement("div");
     newel.innerHTML = draggedItem;
     day.style.backgroundColor = 'transparent';
+    weeklyVolume += 1;
     if (day.innerHTML == 'SUNDAY') {
       sundaylist.appendChild(newel);
     } else if (day.innerHTML == 'MONDAY') {
@@ -182,4 +187,8 @@ reset.addEventListener('click', ()=> {
   daysList.forEach((day)=> {
     day.innerHTML = '';
   })
+})
+// CHECK LOGIC
+check.addEventListener('click', ()=> {
+  
 })
