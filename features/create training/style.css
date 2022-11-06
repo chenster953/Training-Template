@@ -272,6 +272,20 @@ body {
   scale: 1.2;
 }
 
+.effectiveness {
+  width: 20rem;
+  height: 2rem;
+  border-radius: 15px;
+  border: solid white 2px;
+  position: absolute;
+  top: 30rem;
+  left: 30rem;
+  text-align: center;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+
 .footer {
   background-image: radial-gradient(at center center, #FFD400 0%, #F5B301 81%);
   border-top: black solid 1rem;

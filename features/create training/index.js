@@ -41,8 +41,18 @@ const muscleGroups = [chest, back, arms, shoulders, legs, abs];
 const days = [sunday, monday, tuesday, wednesday, thursday, friday, saturday];
 const daysList = [sundaylist, mondaylist, tuesdaylist, wednesdaylist, thursdaylist, fridaylist, saturdaylist];
 
-let weeklyVolume = 0;
+let weeklyChest = 0;
+let weeklyBack = 0;
+let weeklyArms = 0;
+let weeklyShoulders = 0;
+let weeklyLegs = 0;
+let weeklyAbs = 0;
 
+// RENDER EFFECTIVENESS BAR
+const effectivenessBar = document.querySelector('.effectiveness');
+let effectiveness = 100;
+effectivenessBar.innerHTML = 0 + '%';
+effectivenessBar.style.background = 'transparent';
 
 const newExercise = document.querySelector('.newexercise');
 const reset = document.querySelector('.reset');
@@ -161,9 +171,25 @@ function weekdayEventListener() {
   })
   day.addEventListener('drop',()=> {
     newel = document.createElement("div");
-    newel.innerHTML = draggedItem;
+    if (chestExercises.includes(draggedItem)) {
+      newel.innerHTML = draggedItem + "<br/>" + "Sets: " + "<input class='chestsets' type=number min='1' max='5'/>"
+    }
+    if (backExercises.includes(draggedItem)) {
+      newel.innerHTML = draggedItem + "<br/>" + "Sets: " + "<input class='backsets' type=number min='1' max='5'/>"
+    }
+    if (armsExercises.includes(draggedItem)) {
+      newel.innerHTML = draggedItem + "<br/>" + "Sets: " + "<input class='armssets' type=number min='1' max='5'/>"
+    }
+    if (shouldersExercises.includes(draggedItem)) {
+      newel.innerHTML = draggedItem + "<br/>" + "Sets: " + "<input class='shoulderssets' type=number min='1' max='5'/>"
+    }
+    if (legsExercises.includes(draggedItem)) {
+      newel.innerHTML = draggedItem + "<br/>" + "Sets: " + "<input class='legssets' type=number min='1' max='5'/>"
+    }
+    if (absExercises.includes(draggedItem)) {
+      newel.innerHTML = draggedItem + "<br/>" + "Sets: " + "<input class='abssets' type=number min='1' max='5'/>"
+    }
     day.style.backgroundColor = 'transparent';
-    weeklyVolume += 1;
     if (day.innerHTML == 'SUNDAY') {
       sundaylist.appendChild(newel);
     } else if (day.innerHTML == 'MONDAY') {
@@ -186,9 +212,63 @@ function weekdayEventListener() {
 reset.addEventListener('click', ()=> {
   daysList.forEach((day)=> {
     day.innerHTML = '';
-  })
+  });
+  effectiveness = 100;
+  effectivenessBar.innerHTML = 0 + '%';
+  effectivenessBar.style.background = `transparent`;
 })
 // CHECK LOGIC
 check.addEventListener('click', ()=> {
-  
-})
+  resetSets();
+  const chestSets = document.querySelectorAll('.chestsets');
+  const backSets = document.querySelectorAll('.backsets');
+  const armsSets = document.querySelectorAll('.armssets');
+  const shouldersSets = document.querySelectorAll('.shoulderssets');
+  const legsSets = document.querySelectorAll('.legssets');
+  const absSets = document.querySelectorAll('.abssets');
+  chestSets.forEach((set)=> {
+    weeklyChest += parseInt(set.value);
+  });
+  backSets.forEach((set)=> {
+    weeklyBack += parseInt(set.value);
+  });
+  armsSets.forEach((set)=> {
+    weeklyArms += parseInt(set.value);
+  });
+  shouldersSets.forEach((set)=> {
+    weeklyShoulders += parseInt(set.value);
+  });
+  legsSets.forEach((set)=> {
+    weeklyLegs += parseInt(set.value);
+  });
+  absSets.forEach((set)=> {
+    weeklyAbs += parseInt(set.value);
+  });
+  const weeklyVolume = [weeklyChest, weeklyBack, weeklyArms, weeklyShoulders, weeklyLegs, weeklyAbs];
+  effectiveness = 100;
+  weeklyVolume.forEach((group)=> {
+    if (group < 10) {
+      effectiveness -= 10;
+    } else if (group > 20) {
+      effectiveness -= 10;
+    } else if (isNaN(group)) {
+      console.log('nan')
+      effectiveness -= 10;
+    }
+  });
+  effectivenessBar.innerHTML = effectiveness + '%';
+  effectivenessBar.style.background = `linear-gradient(to right, green ${effectiveness}%, transparent)`;
+  if (effectiveness == 40) {
+    effectivenessBar.innerHTML = '0%';
+    effectivenessBar.style.background = 'transparent'
+  }
+});
+// reset sets
+function resetSets() {
+  weeklyChest = 0;
+  weeklyBack = 0;
+  weeklyArms = 0;
+  weeklyShoulders = 0;
+  weeklyLegs = 0;
+  weeklyAbs = 0;
+}
